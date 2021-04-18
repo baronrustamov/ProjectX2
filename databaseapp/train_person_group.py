@@ -16,7 +16,7 @@ def trainGroup(request):
         department = str(request.POST.get('student_department','')) 
         sem = str(request.POST.get('student_sem','')) 
         groupid=sem+department
-        print groupid
+        print (groupid)
         #groupid is righnow hardcoded :)
         groupid="4thyearcse"
 
