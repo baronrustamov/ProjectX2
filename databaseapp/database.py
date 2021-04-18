@@ -17,8 +17,8 @@ def addDepartment(request):
 	        d.save()
 	        #st=stu(student_name=did,student_usn=dname,sem=7,dept_id_id="cve")
 	        #st.save()
-        except Exception:
-			print(Exception)
+        except:
+			print('smthng gone wrong')
 
 	#print("[Errno {0}] {1}".format(e.errno, e.strerror))
     #return data
