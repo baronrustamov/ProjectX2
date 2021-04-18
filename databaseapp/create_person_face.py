@@ -1,5 +1,5 @@
 
-import httplib, urllib, base64
+import httplib2, urllib, base64
 from django.shortcuts import render
 from django.template import loader
 from django.template import Context
@@ -30,7 +30,7 @@ def createPerson(request):
         data=""
         try:
             body='{"name":"'+usn+'","userData":"'+name+'"}'
-            print body
+            print (body)
             conn = httplib.HTTPSConnection('westus.api.cognitive.microsoft.com')
             conn.request("POST", "/face/v1.0/persongroups/{personGroupId}/persons?%s" % params, str(body), headers)
             response = conn.getresponse()
@@ -47,7 +47,7 @@ def createPerson(request):
             #type a query to store person id
             conn.close()
         except Exception as e:
-            print "exception",e
+            print ("exception",e)
             #print("[Errno {0}] {1}".format(e.errno, e.strerror))
         return render(request, 'databaseapp/createperson.html', {
             'uploaded_file_url': data

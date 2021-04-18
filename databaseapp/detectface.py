@@ -1,5 +1,5 @@
 
-import httplib, urllib, base64
+import httplib2, urllib, base64
 
 from django.shortcuts import render
 from django.template import loader

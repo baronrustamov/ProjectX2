@@ -26,7 +26,7 @@ class Department(models.Model):
 class Classroom(models.Model):
 
     group_id = models.CharField(max_length = 200,primary_key = True)
-    dept_id = models.ForeignKey(Department)
+    dept_id = models.ForeignKey('Department',on_delete=models.DO_NOTHING)
     sem = models.IntegerField()
 
     def publish(self):
@@ -41,7 +41,7 @@ class Subject(models.Model):
 
     subject_id = models.CharField(max_length = 200,primary_key = True)
     subject_name = models.CharField(max_length = 200)
-    dept_id = models.ForeignKey(Department)
+    dept_id = models.ForeignKey('Department', on_delete=models.DO_NOTHING)
     sem = models.IntegerField()
     classdone = models.IntegerField()
 
@@ -57,7 +57,7 @@ class Student(models.Model):
 
     student_name = models.CharField(max_length = 200)
     student_usn = models.CharField(max_length = 200,primary_key = True)
-    dept_id = models.ForeignKey(Department)
+    dept_id = models.ForeignKey('Department', on_delete=models.DO_NOTHING)
     sem = models.IntegerField()
     
 
@@ -71,8 +71,8 @@ class Student(models.Model):
 
 class Attendence(models.Model):
 
-    student_usn = models.ForeignKey(Student)
-    subject_id = models.ForeignKey(Subject)
+    student_usn = models.ForeignKey(Student, on_delete=models.DO_NOTHING)
+    subject_id = models.ForeignKey(Subject, on_delete=models.DO_NOTHING)
     classattended = models.IntegerField(default = 0)
 
 
@@ -89,7 +89,7 @@ class Attendence(models.Model):
 
 class faces(models.Model):
 
-    student_usn = models.ForeignKey(Student)
+    student_usn = models.ForeignKey(Student, on_delete=models.DO_NOTHING)
     face_id = models.CharField(max_length = 200, primary_key = True)
 
     def publish(self):
@@ -98,7 +98,7 @@ class faces(models.Model):
     def __str__(self):
         return self.face_id
 class createPerson(models.Model):
-    student_usn=models.ForeignKey(Student)
+    student_usn=models.ForeignKey(Student, on_delete=models.DO_NOTHING)
     person_id=models.CharField(max_length=200,primary_key=True)
 
 

@@ -1,4 +1,4 @@
-import httplib, urllib, base64
+import httplib2, urllib, base64
 from django.shortcuts import render
 from django.template import loader
 from django.template import Context
@@ -35,13 +35,13 @@ def createPerson(request):
                 if len(i['candidates'])!=0:
                     k=i['candidates']
                     for j in k:
-                        print j['personId'],j['confidence']
+                        print (j['personId'],j['confidence'])
                         usn=""
                         query1=""
                         usn= cp.objects.values_list('student_usn').filter(person_id=j['personId'])
                         k= usn[0]
                         l=k[0]
-                        print l
+                        print (l)
 
                         query2 = stu.objects.values_list('student_name').filter(student_usn=l)
                         name=query2[0]
@@ -54,9 +54,9 @@ def createPerson(request):
                             usnlist.append(l)
                             confidencelist.append(j['confidence'])
             zipped=zip(namelist,usnlist,confidencelist)
-            print namelist
-            print usnlist
-            print  confidencelist
+            print (namelist)
+            print (usnlist)
+            print  (confidencelist)
             variables=Context({'zip':zipped})
              
             

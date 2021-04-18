@@ -1,5 +1,5 @@
 
-import httplib, urllib, base64
+import httplib2, urllib, base64
 from django.shortcuts import render
 from django.template import loader
 from django.template import Context
@@ -23,12 +23,12 @@ def addFace(request):
     'userData': '{string}',
     'targetFace': '{string}',
     })
-    print "ok 1"
+    print ("ok 1")
     if request.method == 'POST' and request.FILES['face']:
         myfile = request.FILES['face']
         #data= open(myfile, "rb").read()
         data=myfile.read()
-        print "ok 2"
+        print ("ok 2")
         #faceid=detectface.detectFace(data)
         #print faceid
 
@@ -38,18 +38,18 @@ def addFace(request):
         for i in e:
             for j in i:
                 personid=str(j)
-        print personid
+        print (personid)
 
 
         try:
-            print "ok 3"
+            print ("ok 3")
 
 
             conn = httplib.HTTPSConnection('westus.api.cognitive.microsoft.com')
             conn.request("POST", "/face/v1.0/persongroups/4thyearcse/persons/%s/persistedFaces?"%personid , data, headers)
             response = conn.getresponse()
             data = response.read()
-            print "ok 4"
+            print ("ok 4")
 
 
             print(data)
@@ -62,7 +62,7 @@ def addFace(request):
             
             conn.close()
         except Exception as e:
-            print "Exception:",e
+            print ("Exception:",e)
             #print("[Errno {0}] {1}".format(e.errno, e.strerror))
         return render(request, 'databaseapp/addpersonface.html', {
             'status': data
