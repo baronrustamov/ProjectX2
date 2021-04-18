@@ -1,0 +1,44 @@
+
+{% load staticfiles %}
+{% load static %}
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'testing/style.css' %}" />
+</head>
+<body >
+<h1><a href="/">TestingPage</a></h1>
+{% block content %}
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+   USN <input type="text" name="usn" >
+   <br>
+   Name <input type="text" name="name">
+   <br>
+   file <input type="file" name="myfile">
+   <br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if zip %}
+  
+  <table cellspacing="10">
+
+  <tr><td>Name </td><td>Usn</td><td>Confidence</td></tr>
+  <tr width="550" ></tr>
+<p>
+    <p>status: {% for i in zip %}
+    <tr><td>{{i.0}}</td><td>{{i.1}}</td><td>{{i.2}}</td></tr>
+    {%endfor %}
+    </p>
+
+
+    </p></table>
+
+  {% endif %}
+
+{% endblock %}
+</body>
+</html>
