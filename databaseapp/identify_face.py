@@ -19,14 +19,14 @@ def identifyFace(request):
         'Content-Type': 'application/json',
         'Ocp-Apim-Subscription-Key': '800be4bdc4b8456f9266ab1177104bc3',
     }
-    params1 = urllib.urlencode({
+    params1 = urllib.parse.urlencode({
     # Request parameters
        'returnFaceId': 'true',
        'returnFaceLandmarks': 'false'
     
       })
 
-    params2 = urllib.urlencode({
+    params2 = urllib.parse.urlencode({
     })
     print ("ok0")
 

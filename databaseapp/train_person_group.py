@@ -10,7 +10,7 @@ def trainGroup(request):
     'Ocp-Apim-Subscription-Key': '800be4bdc4b8456f9266ab1177104bc3',
     }
 
-    params = urllib.urlencode({
+    params = urllib.parse.urlencode({
     })
     if request.method == 'POST':
         department = str(request.POST.get('student_department','')) 

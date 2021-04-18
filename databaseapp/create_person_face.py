@@ -18,7 +18,7 @@ def createPerson(request):
         'Ocp-Apim-Subscription-Key': '800be4bdc4b8456f9266ab1177104bc3',
     }
 
-    params = urllib.urlencode({'personGroupId':'4thyearcse'
+    params = urllib.parse.urlencode({'personGroupId':'4thyearcse'
     })
 
     if request.method == 'GET' :
